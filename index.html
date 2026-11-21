@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>VoiceAI SaaS | Client Customer Service (Voice &amp; Chat)</title>
+  <title>Customer Service | Voice &amp; Chat Support</title>
   <style>
     :root {
       --bg-dark: #090d16;
@@ -35,7 +35,7 @@
       flex-direction: column;
     }
 
-    .navbar {
+    .topbar {
       background: rgba(17, 24, 39, 0.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
@@ -45,7 +45,7 @@
       z-index: 20;
     }
 
-    .nav-inner {
+    .topbar-inner {
       max-width: 1120px;
       margin: 0 auto;
       display: flex;
@@ -55,67 +55,33 @@
       flex-wrap: wrap;
     }
 
-    .brand {
+    .brand-group {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--text-main);
-      text-decoration: none;
-    }
-
-    .brand-badge {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      font-weight: 600;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 8px;
       flex-wrap: wrap;
     }
 
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-muted);
-      font-size: 13.5px;
-      font-weight: 500;
-      padding: 7px 12px;
-      border-radius: 8px;
-      transition: all 0.2s ease;
-    }
-
-    .nav-links a:hover {
+    .brand-name {
+      font-weight: 700;
+      font-size: 16px;
       color: var(--text-main);
-      background: rgba(255, 255, 255, 0.05);
     }
 
-    .nav-links a.active {
+    .client-pill {
+      font-size: 12px;
       color: var(--accent);
       background: var(--accent-soft);
-      border: 1px solid rgba(56, 189, 248, 0.25);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 600;
     }
 
-    .lang-bar {
-      background: rgba(17, 24, 39, 0.75);
-      border-bottom: 1px solid var(--border);
-      padding: 10px 20px;
-    }
-
-    .lang-inner {
-      max-width: 1120px;
-      margin: 0 auto;
+    .lang-box {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
@@ -134,7 +100,7 @@
       font-size: 13px;
       font-weight: 600;
       outline: none;
-      min-width: 220px;
+      min-width: 200px;
     }
 
     .lang-select:focus {
@@ -146,14 +112,14 @@
       max-width: 1120px;
       width: 100%;
       margin: 0 auto;
-      padding: 26px 20px 44px;
+      padding: 28px 20px 44px;
       display: grid;
-      grid-template-columns: 1.05fr 1fr;
+      grid-template-columns: 1fr 1.15fr;
       gap: 22px;
       align-items: start;
     }
 
-    @media (max-width: 860px) {
+    @media (max-width: 880px) {
       .main-wrap {
         grid-template-columns: 1fr;
       }
@@ -167,15 +133,6 @@
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
     }
 
-    .top-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-
     .status-pill {
       display: inline-flex;
       align-items: center;
@@ -187,6 +144,7 @@
       background: rgba(148, 163, 184, 0.12);
       color: #cbd5e1;
       border: 1px solid var(--border);
+      margin-bottom: 14px;
     }
 
     .dot {
@@ -209,16 +167,6 @@
     .status-pill.error .dot {
       background: var(--danger);
       box-shadow: 0 0 10px var(--danger);
-    }
-
-    .client-tag {
-      font-size: 12px;
-      color: var(--accent);
-      background: var(--accent-soft);
-      border: 1px solid rgba(56, 189, 248, 0.28);
-      padding: 5px 10px;
-      border-radius: 999px;
-      font-weight: 600;
     }
 
     h1 {
@@ -373,7 +321,7 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 14px;
-      height: 245px;
+      height: 290px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
@@ -382,11 +330,12 @@
     }
 
     .msg {
-      max-width: 86%;
-      padding: 10px 12px;
+      max-width: 90%;
+      padding: 11px 13px;
       border-radius: 12px;
       font-size: 13px;
-      line-height: 1.5;
+      line-height: 1.55;
+      white-space: pre-line;
     }
 
     .msg.bot {
@@ -401,6 +350,23 @@
       background: rgba(34, 197, 94, 0.16);
       border: 1px solid rgba(34, 197, 94, 0.32);
       color: #f8fafc;
+    }
+
+    .chat-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .mini-action {
+      background: rgba(34, 197, 94, 0.12);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      cursor: pointer;
     }
 
     .chat-input-row {
@@ -441,63 +407,52 @@
 </head>
 <body>
 
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a class="brand" href="index.html">
-        <span>VoiceAI SaaS</span>
-        <span class="brand-badge">Client Customer Service</span>
-      </a>
-      <div class="nav-links">
-        <a href="index.html" class="active">Customer</a>
-        <a href="client.html">Client</a>
-        <a href="subscription.html">Subscription</a>
-        <a href="admin.html">Admin</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand-group">
+        <span class="brand-name" id="serviceBrandTitle">Customer Support Desk</span>
+        <span id="clientBadge" class="client-pill">Demo Smart Store</span>
+      </div>
+
+      <div class="lang-box">
+        <span class="lang-label" id="langBarLabel">ভাষা (২০টি ভাষা):</span>
+        <select id="languageSelect" class="lang-select" aria-label="Select Service Language">
+          <option value="bn">বাংলা (Bangla)</option>
+          <option value="en">English (ইংরেজি)</option>
+          <option value="ar">العربية (Arabic)</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="ur">اردو (Urdu)</option>
+          <option value="es">Español (Spanish)</option>
+          <option value="fr">Français (French)</option>
+          <option value="de">Deutsch (German)</option>
+          <option value="zh">中文 (Chinese)</option>
+          <option value="ja">日本語 (Japanese)</option>
+          <option value="ko">한국어 (Korean)</option>
+          <option value="pt">Português (Portuguese)</option>
+          <option value="ru">Русский (Russian)</option>
+          <option value="tr">Türkçe (Turkish)</option>
+          <option value="it">Italiano (Italian)</option>
+          <option value="th">ไทย (Thai)</option>
+          <option value="vi">Tiếng Việt (Vietnamese)</option>
+          <option value="id">Bahasa Indonesia (Indonesian)</option>
+          <option value="ms">Bahasa Melayu (Malay)</option>
+          <option value="nl">Nederlands (Dutch)</option>
+        </select>
       </div>
     </div>
-  </nav>
-
-  <div class="lang-bar">
-    <div class="lang-inner">
-      <span class="lang-label" id="langBarLabel">কাস্টমার সার্ভিস ভাষা (২০টি আন্তর্জাতিক ভাষা):</span>
-      <select id="languageSelect" class="lang-select" aria-label="Select Service Language">
-        <option value="bn">বাংলা (Bangla)</option>
-        <option value="en">English (ইংরেজি)</option>
-        <option value="ar">العربية (Arabic)</option>
-        <option value="hi">हिन्दी (Hindi)</option>
-        <option value="ur">اردو (Urdu)</option>
-        <option value="es">Español (Spanish)</option>
-        <option value="fr">Français (French)</option>
-        <option value="de">Deutsch (German)</option>
-        <option value="zh">中文 (Chinese)</option>
-        <option value="ja">日本語 (Japanese)</option>
-        <option value="ko">한국어 (Korean)</option>
-        <option value="pt">Português (Portuguese)</option>
-        <option value="ru">Русский (Russian)</option>
-        <option value="tr">Türkçe (Turkish)</option>
-        <option value="it">Italiano (Italian)</option>
-        <option value="th">ไทย (Thai)</option>
-        <option value="vi">Tiếng Việt (Vietnamese)</option>
-        <option value="id">Bahasa Indonesia (Indonesian)</option>
-        <option value="ms">Bahasa Melayu (Malay)</option>
-        <option value="nl">Nederlands (Dutch)</option>
-      </select>
-    </div>
-  </div>
+  </header>
 
   <main class="main-wrap">
-    <!-- Left: Client Voice Call Support -->
+    <!-- Left: Voice Call -->
     <section class="card">
-      <div class="top-meta">
-        <div id="statusPill" class="status-pill">
-          <span class="dot"></span>
-          <span id="statusText">প্রস্তুত</span>
-        </div>
-        <span id="clientBadge" class="client-tag">Demo Smart Store • 400 min</span>
+      <div id="statusPill" class="status-pill">
+        <span class="dot"></span>
+        <span id="statusText">প্রস্তুত</span>
       </div>
 
-      <h1 id="voiceTitle">ক্লায়েন্ট কাস্টমার সার্ভিস কল</h1>
+      <h1 id="voiceTitle">কাস্টমার সার্ভিস ভয়েস কল</h1>
       <p id="voiceSubtitle" class="subtitle">
-        ক্লায়েন্টের সাপোর্ট এজেন্টের সাথে সরাসরি ভয়েস কলে কথা বলুন। কল ১ মিনিট হলে নিচে Waiting for 1 minute দেখাবে।
+        কাস্টমার সাপোর্ট এজেন্টের সাথে সরাসরি ভয়েস কলে কথা বলুন। কল ১ মিনিট হলে নিচে Waiting for 1 minute দেখাবে।
       </p>
 
       <div id="blockedBox" class="blocked-box"></div>
@@ -522,20 +477,26 @@
       </div>
     </section>
 
-    <!-- Right: Client Chat Support Solution -->
+    <!-- Right: Customer Chat Solution -->
     <section class="card">
-      <h2 id="chatTitle" style="font-size: 20px; margin-bottom: 6px;">ক্লায়েন্ট কাস্টমার সার্ভিস চ্যাট</h2>
+      <h2 id="chatTitle" style="font-size: 20px; margin-bottom: 6px;">কাস্টমার সার্ভিস চ্যাট সমাধান</h2>
       <p id="chatSubtitle" class="subtitle" style="margin-bottom: 12px;">
-        চ্যাটে প্রশ্ন লিখে দ্রুত সমাধান ও সাপোর্ট রেফারেন্স নম্বর পান।
+        আপনার সমস্যা বা প্রশ্ন লিখে পাঠান—ধাপভিত্তিক সমাধান ও কেস রেফারেন্স নম্বর পাবেন।
       </p>
 
       <div class="quick-pills">
-        <button type="button" class="quick-pill" data-topic="delivery" id="pillDelivery">ডেলিভারি তথ্য</button>
+        <button type="button" class="quick-pill" data-topic="order" id="pillOrder">অর্ডার / পেমেন্ট</button>
+        <button type="button" class="quick-pill" data-topic="delivery" id="pillDelivery">ডেলিভারি</button>
         <button type="button" class="quick-pill" data-topic="refund" id="pillRefund">রিফান্ড / রিটার্ন</button>
-        <button type="button" class="quick-pill" data-topic="ticket" id="pillTicket">সাপোর্ট টিকিট</button>
+        <button type="button" class="quick-pill" data-topic="account" id="pillAccount">অ্যাকাউন্ট</button>
       </div>
 
       <div id="chatFeed" class="chat-feed"></div>
+
+      <div class="chat-actions">
+        <button type="button" id="resolveConfirmBtn" class="mini-action">✓ সমাধানে সন্তুষ্ট</button>
+        <button type="button" id="escalateVoiceBtn" class="mini-action">📞 ভয়েস কলে কথা বলুন</button>
+      </div>
 
       <form id="chatForm" class="chat-input-row">
         <input id="chatInput" type="text" placeholder="আপনার সমস্যা বা প্রশ্ন লিখুন..." required />
@@ -545,7 +506,7 @@
   </main>
 
   <footer>
-    VoiceAI SaaS Platform • 20-Language Client Voice &amp; Chat Desk
+    Customer Voice &amp; Chat Support Desk
   </footer>
 
   <script type="module">
@@ -557,14 +518,14 @@
 
     const I18N = {
       bn: {
-        langLabel: "কাস্টমার সার্ভিস ভাষা (২০টি আন্তর্জাতিক ভাষা):",
+        langLabel: "ভাষা (২০টি ভাষা):",
         ready: "প্রস্তুত",
         connecting: "সংযোগ হচ্ছে...",
         live: "কল লাইভ চলছে",
         ended: "কল শেষ হয়েছে",
-        blockedTitle: "সার্ভিস বন্ধ",
-        voiceTitle: "ক্লায়েন্ট কাস্টমার সার্ভিস কল",
-        voiceSub: "ক্লায়েন্টের সাপোর্ট এজেন্টের সাথে সরাসরি ভয়েস কলে কথা বলুন। কল ১ মিনিট হলে নিচে Waiting for 1 minute দেখাবে।",
+        blockedTitle: "সার্ভিস সাময়িকভাবে বন্ধ",
+        voiceTitle: "কাস্টমার সার্ভিস ভয়েস কল",
+        voiceSub: "কাস্টমার সাপোর্ট এজেন্টের সাথে সরাসরি ভয়েস কলে কথা বলুন। কল ১ মিনিট হলে নিচে Waiting for 1 minute দেখাবে।",
         helperStart: "কল শুরু করতে নিচের বাটনে চাপ দিন",
         helperLive: "এজেন্ট শুনছে — নির্দ্বিধায় কথা বলুন",
         startBtn: "কল শুরু করুন",
@@ -573,28 +534,27 @@
         unmuteBtn: "Unmute Mic",
         transcriptLabel: "Live Call Transcript",
         emptyTranscript: "এখনো কোনো ভয়েস কল শুরু হয়নি।",
-        chatTitle: "ক্লায়েন্ট কাস্টমার সার্ভিস চ্যাট",
-        chatSub: "চ্যাটে প্রশ্ন লিখে দ্রুত সমাধান ও সাপোর্ট রেফারেন্স নম্বর পান।",
-        pillDelivery: "ডেলিভারি তথ্য",
+        chatTitle: "কাস্টমার সার্ভিস চ্যাট সমাধান",
+        chatSub: "আপনার সমস্যা বা প্রশ্ন লিখে পাঠান—ধাপভিত্তিক সমাধান ও কেস রেফারেন্স নম্বর পাবেন।",
+        pillOrder: "অর্ডার / পেমেন্ট",
+        pillDelivery: "ডেলিভারি",
         pillRefund: "রিফান্ড / রিটার্ন",
-        pillTicket: "সাপোর্ট টিকিট",
+        pillAccount: "অ্যাকাউন্ট",
+        resolveBtn: "✓ সমাধানে সন্তুষ্ট",
+        escalateBtn: "📞 ভয়েস কলে কথা বলুন",
         inputPlaceholder: "আপনার সমস্যা বা প্রশ্ন লিখুন...",
         sendBtn: "পাঠান",
-        welcome: "স্বাগতম! আপনার প্রশ্ন লিখুন বা দ্রুত সমাধানের বাটনে চাপ দিন।",
-        solDelivery: (t, c) => `${c} সাপোর্ট (${t}): সাধারণত ২৪–৭২ ঘণ্টার মধ্যে ডেলিভারি সম্পন্ন হয়। বিস্তারিত জানতে ভয়েস কলও করতে পারেন।`,
-        solRefund: (t, c) => `${c} সাপোর্ট (${t}): নির্ধারিত সময়ের মধ্যে অক্ষত অবস্থায় থাকলে রিটার্ন বা রিফান্ডের জন্য আবেদন করা যায়।`,
-        solTicket: (t, c) => `${c} সাপোর্ট (${t}): আপনার সাপোর্ট টিকিট তৈরি হয়েছে। সরাসরি কথা বলতে ভয়েস কল শুরু করুন।`,
-        solGeneral: (t, c, faq) => faq ? `${c} সাপোর্ট (${t}): ${faq}` : `${c} সাপোর্ট (${t}): আপনার মেসেজটি গ্রহণ করা হয়েছে। দ্রুত সহায়তার জন্য ভয়েস কলে যুক্ত হতে পারেন।`
+        welcome: "স্বাগতম! আপনার প্রশ্ন বা সমস্যাটি লিখুন—আমি ধাপে ধাপে সমাধান দিচ্ছি।"
       },
       en: {
-        langLabel: "Customer Service Language (20 Global Languages):",
+        langLabel: "Language (20 Languages):",
         ready: "Ready",
         connecting: "Connecting...",
         live: "Call Live",
         ended: "Call Ended",
         blockedTitle: "Service Unavailable",
-        voiceTitle: "Client Customer Service Call",
-        voiceSub: "Speak directly with the client support agent. After 1 minute, Waiting for 1 minute will appear below.",
+        voiceTitle: "Customer Service Voice Call",
+        voiceSub: "Speak directly with the customer support agent. After 1 minute, Waiting for 1 minute will appear below.",
         helperStart: "Press the button below to start a call",
         helperLive: "Agent is listening — speak clearly",
         startBtn: "Start Call",
@@ -603,27 +563,26 @@
         unmuteBtn: "Unmute Mic",
         transcriptLabel: "Live Call Transcript",
         emptyTranscript: "No voice call started yet.",
-        chatTitle: "Client Customer Service Chat",
-        chatSub: "Ask your question in chat for fast solutions and a support reference ID.",
-        pillDelivery: "Delivery Info",
+        chatTitle: "Customer Service Chat Resolution",
+        chatSub: "Type your issue or question for step-by-step solutions and a case reference ID.",
+        pillOrder: "Order / Payment",
+        pillDelivery: "Delivery",
         pillRefund: "Refund / Return",
-        pillTicket: "Support Ticket",
+        pillAccount: "Account",
+        resolveBtn: "✓ Mark Resolved",
+        escalateBtn: "📞 Speak via Voice Call",
         inputPlaceholder: "Type your issue or question...",
         sendBtn: "Send",
-        welcome: "Welcome! Type your question or use a quick topic button for an instant solution.",
-        solDelivery: (t, c) => `${c} Support (${t}): Standard delivery takes 24–72 hours. You can also start a voice call for live assistance.`,
-        solRefund: (t, c) => `${c} Support (${t}): Eligible unused items can be requested for return or refund within the policy window.`,
-        solTicket: (t, c) => `${c} Support (${t}): Your support ticket has been created. Start a voice call to speak directly.`,
-        solGeneral: (t, c, faq) => faq ? `${c} Support (${t}): ${faq}` : `${c} Support (${t}): Your message has been received. Use voice call for immediate help.`
+        welcome: "Welcome! Type your question or issue—I will guide you step by step."
       }
     };
 
-    function getPack(langCode) {
-      if (I18N[langCode]) return I18N[langCode];
+    function getPack(code) {
+      if (I18N[code]) return I18N[code];
       return {
         ...I18N.en,
-        langLabel: `Customer Service Language (${langCode.toUpperCase()}):`,
-        welcome: `[${langCode.toUpperCase()}] Welcome to Client Customer Service. Ask your question or start a voice call.`
+        langLabel: `Language (${code.toUpperCase()}):`,
+        welcome: `[${code.toUpperCase()}] Welcome to Customer Support. Type your question or start a voice call.`
       };
     }
 
@@ -646,9 +605,12 @@
     const transcriptLabel = document.getElementById("transcriptLabel");
     const chatTitle = document.getElementById("chatTitle");
     const chatSubtitle = document.getElementById("chatSubtitle");
+    const pillOrder = document.getElementById("pillOrder");
     const pillDelivery = document.getElementById("pillDelivery");
     const pillRefund = document.getElementById("pillRefund");
-    const pillTicket = document.getElementById("pillTicket");
+    const pillAccount = document.getElementById("pillAccount");
+    const resolveConfirmBtn = document.getElementById("resolveConfirmBtn");
+    const escalateVoiceBtn = document.getElementById("escalateVoiceBtn");
     const chatFeed = document.getElementById("chatFeed");
     const chatForm = document.getElementById("chatForm");
     const chatInput = document.getElementById("chatInput");
@@ -658,6 +620,7 @@
     let secondsElapsed = 0;
     let isMuted = false;
     let hasTranscript = false;
+    let activeCaseId = "CASE-" + String(Date.now()).slice(-5);
 
     const savedLang = localStorage.getItem("voiceai_service_lang") || "bn";
     langSelect.value = savedLang;
@@ -679,12 +642,10 @@
       const noMinutes = Number(found.minutes) <= 0;
       return {
         name: found.name,
-        minutes: Number(found.minutes) || 0,
-        status: found.status || "active",
         allowed: !suspended && !noMinutes,
         reason: suspended
-          ? "Client account is currently Suspended. Please contact Admin."
-          : "No call/chat minutes remaining on this client account.",
+          ? "এই সাপোর্ট চ্যানেলটি বর্তমানে সাময়িকভাবে বন্ধ আছে।"
+          : "এই চ্যানেলের সাপোর্ট কোটা বর্তমানে শেষ হয়েছে।",
         assistantId: (clientCfg.assistantId || DEFAULT_ASSISTANT_ID).trim() || DEFAULT_ASSISTANT_ID,
         faqNote: (clientCfg.faqNote || "").trim()
       };
@@ -716,9 +677,12 @@
       transcriptLabel.textContent = p.transcriptLabel;
       chatTitle.textContent = p.chatTitle;
       chatSubtitle.textContent = p.chatSub;
+      pillOrder.textContent = p.pillOrder;
       pillDelivery.textContent = p.pillDelivery;
       pillRefund.textContent = p.pillRefund;
-      pillTicket.textContent = p.pillTicket;
+      pillAccount.textContent = p.pillAccount;
+      resolveConfirmBtn.textContent = p.resolveBtn;
+      escalateVoiceBtn.textContent = p.escalateBtn;
       chatInput.placeholder = p.inputPlaceholder;
       chatSendBtn.textContent = p.sendBtn;
       if (stopBtn.style.display !== "inline-block") {
@@ -742,7 +706,7 @@
     function applyState() {
       const st = getActiveState();
       const p = getPack(langSelect.value);
-      clientBadge.textContent = `${st.name} • ${st.minutes} min`;
+      clientBadge.textContent = st.name;
 
       if (!st.allowed) {
         blockedBox.style.display = "block";
@@ -750,6 +714,8 @@
         startBtn.disabled = true;
         chatInput.disabled = true;
         chatSendBtn.disabled = true;
+        resolveConfirmBtn.disabled = true;
+        escalateVoiceBtn.disabled = true;
         setStatus("error", p.blockedTitle);
       } else {
         blockedBox.style.display = "none";
@@ -759,6 +725,8 @@
         }
         chatInput.disabled = false;
         chatSendBtn.disabled = false;
+        resolveConfirmBtn.disabled = false;
+        escalateVoiceBtn.disabled = false;
       }
       return st;
     }
@@ -883,22 +851,45 @@
       resetCallUI();
     });
 
-    function buildReply(queryText, topicKey) {
+    function buildActionableResolution(inputText, topicKey) {
       const st = getActiveState();
-      const p = getPack(langSelect.value);
-      const ticket = "SRV-" + String(Date.now()).slice(-5);
-      const lower = (queryText || "").toLowerCase();
+      const lang = langSelect.value;
+      const lower = (inputText || "").toLowerCase();
 
-      if (topicKey === "delivery" || lower.includes("ডেলিভারি") || lower.includes("delivery")) {
-        return p.solDelivery(ticket, st.name);
+      let category = topicKey;
+      if (!category) {
+        if (lower.includes("অর্ডার") || lower.includes("পেমেন্ট") || lower.includes("order") || lower.includes("payment")) {
+          category = "order";
+        } else if (lower.includes("ডেলিভারি") || lower.includes("delivery") || lower.includes("দেরি") || lower.includes("late")) {
+          category = "delivery";
+        } else if (lower.includes("রিফান্ড") || lower.includes("রিটার্ন") || lower.includes("refund") || lower.includes("return")) {
+          category = "refund";
+        } else if (lower.includes("লগইন") || lower.includes("অ্যাকাউন্ট") || lower.includes("login") || lower.includes("account")) {
+          category = "account";
+        } else {
+          category = "general";
+        }
       }
-      if (topicKey === "refund" || lower.includes("রিফান্ড") || lower.includes("রিটার্ন") || lower.includes("refund") || lower.includes("return")) {
-        return p.solRefund(ticket, st.name);
+
+      if (lang === "bn") {
+        const steps = {
+          order: `১. অর্ডার নম্বর ও পেমেন্ট ট্রানজেকশন আইডি লিখে জানান।\n২. পেমেন্ট সম্পন্ন হলেও অর্ডার না দেখালে রেফারেন্সসহ যাচাই করে সমাধান দেওয়া হবে।`,
+          delivery: `১. অর্ডার তারিখ ও ডেলিভারি ঠিকানা উল্লেখ করুন।\n২. নির্ধারিত সময়ের বেশি দেরি হলে কেস নম্বর (${activeCaseId}) দিয়ে অগ্রাধিকার ট্র্যাকিং করা হয়।`,
+          refund: `১. পণ্য/সার্ভিসের বিবরণ ও রিফান্ড/রিটার্নের কারণ লিখুন।\n২. শর্তসাপেক্ষে রিটার্ন বা রিফান্ড প্রক্রিয়া শুরু করা হবে।`,
+          account: `১. ব্রাউজার ক্যাশ ক্লিয়ার করে সঠিক তথ্য দিয়ে পুনরায় চেষ্টা করুন।\n২. অ্যাক্সেস সমস্যা থাকলে বিস্তারিত লিখে ভয়েস কলে কথা বলতে পারেন।`,
+          general: st.faqNote ? `১. ${st.faqNote}\n২. আরও বিস্তারিত জানতে আপনার প্রশ্ন লিখুন বা ভয়েস কল শুরু করুন।` : `১. আপনার সমস্যার বিস্তারিত ও প্রয়োজনীয় তথ্য লিখুন।\n২. দ্রুত সমাধানের জন্য চ্যাটে উত্তর দিন বা ভয়েস কল করুন।`
+        };
+        return `[${st.name} • ${activeCaseId}]\nসমাধান:\n${steps[category]}`;
       }
-      if (topicKey === "ticket" || lower.includes("টিকিট") || lower.includes("ticket")) {
-        return p.solTicket(ticket, st.name);
-      }
-      return p.solGeneral(ticket, st.name, st.faqNote);
+
+      const enSteps = {
+        order: `1. Share your order ID and payment reference.\n2. If payment went through without order confirmation, it will be verified and resolved.`,
+        delivery: `1. Mention your order date and delivery location.\n2. For delays past the estimate, keep Case ID (${activeCaseId}) for follow-up.`,
+        refund: `1. Provide order/service details and the reason for return or refund.\n2. Eligible requests will move forward for return or refund processing.`,
+        account: `1. Clear browser cache if needed and retry with verified details.\n2. For login issues, share details or use voice support.`,
+        general: st.faqNote ? `1. ${st.faqNote}\n2. Share more details in chat or start a voice call.` : `1. Share your issue details and any reference ID.\n2. Continue in chat or start a voice call for direct help.`
+      };
+      return `[${st.name} • ${activeCaseId}]\nResolution:\n${enSteps[category]}`;
     }
 
     chatForm.addEventListener("submit", (e) => {
@@ -909,17 +900,39 @@
       if (!val) return;
       addChatMessage("user", val);
       chatInput.value = "";
-      setTimeout(() => addChatMessage("bot", buildReply(val, null)), 220);
+      setTimeout(() => {
+        addChatMessage("bot", buildActionableResolution(val, null));
+      }, 220);
     });
 
-    document.querySelectorAll(".quick-pill").forEach((btn) => {
-      btn.addEventListener("click", () => {
+    document.querySelectorAll(".quick-pill").forEach((pill) => {
+      pill.addEventListener("click", () => {
         const st = applyState();
         if (!st.allowed) return;
-        const label = btn.textContent;
+        const label = pill.textContent;
         addChatMessage("user", label);
-        setTimeout(() => addChatMessage("bot", buildReply(label, btn.dataset.topic)), 200);
+        setTimeout(() => {
+          addChatMessage("bot", buildActionableResolution(label, pill.dataset.topic));
+        }, 200);
       });
+    });
+
+    resolveConfirmBtn.addEventListener("click", () => {
+      const st = applyState();
+      if (!st.allowed) return;
+      const msg = langSelect.value === "bn"
+        ? `কেস (${activeCaseId}) সমাধান হিসেবে সম্পন্ন হয়েছে। নতুন প্রশ্ন থাকলে লিখুন!`
+        : `Case (${activeCaseId}) marked as resolved. Feel free to ask another question!`;
+      addChatMessage("bot", msg);
+      activeCaseId = "CASE-" + String(Date.now()).slice(-5);
+    });
+
+    escalateVoiceBtn.addEventListener("click", () => {
+      const st = applyState();
+      if (!st.allowed) return;
+      if (startBtn.style.display !== "none" && !startBtn.disabled) {
+        startBtn.click();
+      }
     });
 
     refreshLanguageUI(false);
